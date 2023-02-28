@@ -53,6 +53,10 @@ chrome_path = /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 ; Mac eg: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 ; Windows eg: C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
 debug_chrome = false
+
+cmdProxys[]=socks5://aaa:aaa@43.134.216.184:14303
+cmdProxys[]=socks5://bbb:bbb@43.134.216.184:58778
+...
 ```
 
 **[account_config]**
@@ -97,6 +101,12 @@ Windows eg: C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrom
 
 无头模式调试开关，默认`false` 关闭，打开后执行脚本将开关本地浏览器
 
+- cmdProxys<string[]>
+
+cmd 运行代理配置，配置后生成的`.bat` 脚本会自动加上代理配置，默认生成时递增代理，如代理数量少于账号数量，则到最后一个后循环使用
+
+注意：一个IP 建议跑不超过10个账号
+
 
 
 ### 运行流程
@@ -129,4 +139,6 @@ Windows eg: C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrom
    或者推荐直接双击执行生成出来的对应账号的 `0x....bat` 脚本文件
 
 4. 有账号贡献成功后，会在当前文件夹下生成两个贡献记录文件
+
+5. 账号记录会在根目录下生成`success.txt` 和`session.txt` 做数据回溯整理
 
